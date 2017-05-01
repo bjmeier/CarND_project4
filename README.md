@@ -222,9 +222,9 @@ I implemented this step in the 'process__image()' in the function in the third t
 
 #### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (wobbly lines are ok but no catastrophic failures that would cause the car to drive off the road!).
 
-Here's a [link to my video result](./report/project_video.mp4) https://youtu.be/xcQWSDuIkVY
+Click the below image for a link to my [!["video output"](https://www.youtube.com/watch?v=xcQWSDuIkVY "Video output")
 
-[![Video output](https://img.youtube.com/vi/xcQWSDuIkVY/0.jpg)](https://www.youtube.com/watch?v=xcQWSDuIkVY)
+[![Video output](https://img.youtube.com/vi/xcQWSDuIkVY/0.jpg)](https://www.youtube.com/watch?v=xcQWSDuIkVY "Video output")
 
 ---
 
