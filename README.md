@@ -37,17 +37,17 @@ The goals / steps of this project are the following:
 [video1]: ./project_video.mp4 "Video"
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/571/view) Points
-###Here I will consider the rubric points individually and describe how I addressed each point in my implementation.  
+### Here I will consider the rubric points individually and describe how I addressed each point in my implementation.  
 
 ---
-###Writeup / README
+### Writeup / README
 
-####1. Provide a Writeup / README that includes all the rubric points and how you addressed each one.  You can submit your writeup as markdown or pdf.  [Here](https://github.com/udacity/CarND-Advanced-Lane-Lines/blob/master/writeup_template.md) is a template writeup for this project you can use as a guide and a starting point.  
+#### 1. Provide a Writeup / README that includes all the rubric points and how you addressed each one.  You can submit your writeup as markdown or pdf.  [Here](https://github.com/udacity/CarND-Advanced-Lane-Lines/blob/master/writeup_template.md) is a template writeup for this project you can use as a guide and a starting point.  
 
 You're reading it!
-###Camera Calibration
+### Camera Calibration
 
-####2. Briefly state how you computed the camera matrix and distortion coefficients. Provide an example of a distortion corrected calibration image.
+#### 2. Briefly state how you computed the camera matrix and distortion coefficients. Provide an example of a distortion corrected calibration image.
 
 The code for this step is contained in the first code cell of the IPython notebook located in "./examples/example.ipynb"). 
 
@@ -59,16 +59,16 @@ I then used the output `objpoints` and `imgpoints` to compute the camera calibra
 
 ![alt text][image2]
 
-###Pipeline (single images)
+### Pipeline (single images)
 
-####3. Provide an example of a distortion-corrected image.
+#### 3. Provide an example of a distortion-corrected image.
 To demonstrate this step, I will describe how I apply the distortion correction to one of the test images like this one:
 ![alt text][image3]
 
 The undistortion step yields:
 ![alt text][image4]
 
-####4. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
+#### 4. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
 I used a combination of color and gradient thresholds to generate a binary image.  First, I perfromed a sobel gradient transform in the x-direction.  The x-direction was selected because lane lines tend to be more vertical than horizontal and this help filter extranious images.  The Kernel size used was 3.  The magnitute of the threshold was 35. This transform is perfomed in the in the magx__threshold function located in the cell uder the heading "2. Apply sobel gradient transform". Here are examples of the magnitude and the binary output from this step.
 
 
@@ -122,7 +122,7 @@ An example of the transformation from an imge to a birds-eye view of binary pixe
 
 ![alt text][image12]
 
-####6. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
+#### 6. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
 As described in lecture 33, to find the lane lines, I performed the following steps if the fit was unknown:
 1.  Transformed the image
@@ -140,7 +140,7 @@ This was first done in the cell under the "WIndow from lecture 33" heading.  A r
 
 If the fit was known, the fit set the staring point and the allowable margin set the search area. 
 
-####7a. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
+#### 7a. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
 The bulk of the work is performed in the cells under the "Implement video" heading.  In the process_image() function, the below lines of code reside. 
 
@@ -183,7 +183,7 @@ The bulk of the work is performed in the cells under the "Implement video" headi
 6. Angles of the lines at the top and bottom were obtained.  These will be used to make sure the lines are parallel. 
 7. The offset is calculated by multiplying the real world distance to pixel distance facor and the offset between the middle of the lane and the center of the image.
 
-####7b.  Describe the sanity checks you performed
+#### 7b.  Describe the sanity checks you performed
 
 Sanity checks included:
 1. Making sure each radius of curvatures was greater than 10 m.
@@ -192,7 +192,7 @@ Sanity checks included:
 4. Making sure the lines were parallel within 5 degrees at both the top and bottom of the transformed image.
 5. Making sure at least 200 pixels were detected for both the left lane line and the right lane line.
 
-####7c.  Describe the implemtation of a low-pass filter
+#### 7c.  Describe the implemtation of a low-pass filter
 
 An exponentially weighted moving average (EWMA) filter with a smoothing constant of 0.05 was implemented.
 
@@ -203,7 +203,7 @@ If an image passed the sanity check:
 4.  From the adjusted baseline points, the angles of the left and right lanes were calculated and then averaged to obtain the yaw.
 
 
-####8. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
+#### 8. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
 
 
 The below values were selected to be shown:
@@ -218,16 +218,16 @@ I implemented this step in the 'process__image()' in the function in the third t
 
 ---
 
-###Pipeline (video)
+### Pipeline (video)
 
-####1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (wobbly lines are ok but no catastrophic failures that would cause the car to drive off the road!).
+#### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (wobbly lines are ok but no catastrophic failures that would cause the car to drive off the road!).
 
 Here's a [link to my video result](./report/project_video.mp4)
 
 ---
 
-###Discussion
+### Discussion
 
-####1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
+#### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
 
 By far the most difficult issues was dealing with very bright images and shadows. The recommended next step is to implement a pre-processing step to perform local normalization and/or a color space transformation and filter.  Also, I recommend trying a varying height window to make sure a second order fit is reasonable. For slow sweeping turns with great light light, a tall window should be used.  For quick turns or if lighting is poor, a short window should be used.
