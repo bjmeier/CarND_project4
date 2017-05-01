@@ -1,7 +1,7 @@
 # CarND_project4
 Advanced Lane Lines
-##Writeup Template
-###You can use this file as a template for your writeup if you want to submit it as a markdown file, but feel free to use some other method and submit a pdf if you prefer.
+## Writeup Template
+### You can use this file as a template for your writeup if you want to submit it as a markdown file, but feel free to use some other method and submit a pdf if you prefer.
 
 ---
 
@@ -49,7 +49,7 @@ You're reading it!
 
 #### 2. Briefly state how you computed the camera matrix and distortion coefficients. Provide an example of a distortion corrected calibration image.
 
-The code for this step is contained in the first code cell of the IPython notebook located in "./examples/example.ipynb"). 
+The code for this step is contained in the first code cell of the IPython notebook located in "./examples/project4.ipynb"). 
 
 I start by preparing "object points", which will be the (x, y, z) coordinates of the chessboard corners in the world. Here I am assuming the chessboard is fixed on the (x, y) plane at z=0, such that the object points are the same for each calibration image.  Thus, `objp` is just a replicated array of coordinates, and `objpoints` will be appended with a copy of it every time I successfully detect all chessboard corners in a test image.  `imgpoints` will be appended with the (x, y) pixel position of each of the corners in the image plane with each successful chessboard detection.  An example of this is given below:
 
@@ -84,7 +84,7 @@ These transforms were combined. Below is an example resulting from the combinati
 
 ![alt text][image9]
 
-####5. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
+#### 5. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
 
 The code for my perspective transform includes a function called `warper()`, which appears in the cell under the heading "5. Perform perspective transform".  The `warper()` function takes as inputs an image (`img`), as well as source (`src`) and destination (`dst`) points.  I chose to hardcode the source and destination points in the following manner:
 
@@ -222,7 +222,9 @@ I implemented this step in the 'process__image()' in the function in the third t
 
 #### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (wobbly lines are ok but no catastrophic failures that would cause the car to drive off the road!).
 
-Here's a [link to my video result](./report/project_video.mp4)
+Here's a [link to my video result](./report/project_video.mp4) https://youtu.be/xcQWSDuIkVY
+
+[![Video output](https://img.youtube.com/vi/xcQWSDuIkVY/0.jpg)](https://www.youtube.com/watch?v=xcQWSDuIkVY)
 
 ---
 
